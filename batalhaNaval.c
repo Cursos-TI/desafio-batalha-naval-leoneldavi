@@ -48,13 +48,84 @@ int main() {
         printf("\n");
         }
     }
-    // cria embarcacoes
-    for(int i = 3; i < 6; i++) {
-        tabuleiro[2][i] = 3;
+    // tipo := horizontal, vertical, diagonal1 (/), diagonal2 (\)
+    void criaembarcacao(int tipo, int coordx, int coordy){
+        switch(tipo)
+        {
+            case 0:
+                if(coordx > 7) {
+                    printf("erro\n");
+                    break;
+                }
+                if(
+                    tabuleiro[coordy][coordx] == 3 ||
+                    tabuleiro[coordy][coordx + 1] == 3 ||
+                    tabuleiro[coordy][coordx + 2] == 3
+                ) {
+                    printf("erro\n");
+                    break;
+                }
+                tabuleiro[coordy][coordx] = 3;
+                tabuleiro[coordy][coordx + 1] = 3;
+                tabuleiro[coordy][coordx + 2] = 3;
+                break;
+            case 1:
+                if(coordy > 7) {
+                    printf("erro\n");
+                    break;
+                }
+                if(
+                    tabuleiro[coordy][coordx] == 3 ||
+                    tabuleiro[coordy + 1][coordx] == 3 ||
+                    tabuleiro[coordy + 2][coordx] == 3
+                ) {
+                    printf("erro\n");
+                    break;
+                }
+                tabuleiro[coordy][coordx] = 3;
+                tabuleiro[coordy + 1][coordx] = 3;
+                tabuleiro[coordy + 2][coordx] = 3;
+                break;
+            case 2:
+                if(coordy > 7 || coordx > 7) {
+                    printf("erro\n");
+                    break;
+                }
+                if(
+                    tabuleiro[coordy][coordx] == 3 ||
+                    tabuleiro[coordy - 1][coordx + 1] == 3 ||
+                    tabuleiro[coordy - 2][coordx + 2] == 3
+                ) {
+                    printf("erro\n");
+                    break;
+                }
+                tabuleiro[coordy][coordx] = 3;
+                tabuleiro[coordy - 1][coordx + 1] = 3;
+                tabuleiro[coordy - 2][coordx + 2] = 3;
+                break;
+            case 3:
+                if(coordy < 3 || coordx > 7) {
+                    printf("erro\n");
+                    break;
+                }
+                if(
+                    tabuleiro[coordy][coordx] == 3 ||
+                    tabuleiro[coordy + 1][coordx + 1] == 3 ||
+                    tabuleiro[coordy + 2][coordx + 2] == 3
+                ) {
+                    printf("erro\n");
+                    break;
+                }
+                tabuleiro[coordy][coordx] = 3;
+                tabuleiro[coordy + 1][coordx + 1] = 3;
+                tabuleiro[coordy + 2][coordx + 2] = 3;
+                break;
+        }
     }
-    for(int i = 6; i < 9; i++) {
-        tabuleiro[i][6] = 3;
-    }
+    criaembarcacao(3, 5, 5);
+    criaembarcacao(2, 3, 3);
+    criaembarcacao(0, 6, 2);
+    criaembarcacao(1, 1, 4);
 
     mostratabuleiro();
     
