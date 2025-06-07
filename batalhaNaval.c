@@ -36,5 +36,27 @@ int main() {
     // 1 1 1 1 1
     // 0 0 1 0 0
 
+    int tabuleiro[10][10] = {{0}};
+    int tamanhotabuleiro = sizeof(tabuleiro)/sizeof(tabuleiro[0]);
+    void mostratabuleiro(){
+        printf("  A  B  C  D  E  F  G  H  I  J\n");
+        for(int i = 0; i < tamanhotabuleiro; i++){
+            printf("%d ", i);
+            for(int j = 0; j < tamanhotabuleiro; j++){
+                printf("%d  ", tabuleiro[i][j]);
+            }
+        printf("\n");
+        }
+    }
+    // cria embarcacoes
+    for(int i = 3; i < 6; i++) {
+        tabuleiro[2][i] = 3;
+    }
+    for(int i = 6; i < 9; i++) {
+        tabuleiro[i][6] = 3;
+    }
+
+    mostratabuleiro();
+    
     return 0;
 }
