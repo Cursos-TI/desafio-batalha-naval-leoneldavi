@@ -122,10 +122,42 @@ int main() {
                 break;
         }
     }
-    criaembarcacao(3, 5, 5);
-    criaembarcacao(2, 3, 3);
-    criaembarcacao(0, 6, 2);
-    criaembarcacao(1, 1, 4);
+    // tipo := cone, cruz, octaedro, 
+    void criahabilidade(int tipo, int coordx, int coordy){
+        switch(tipo)
+        {
+            case 0:
+                tabuleiro[coordy][coordx] = 5;
+                for(int i = 0; i < 3; i++) {
+                    tabuleiro[coordy + 1][coordx + i - 1] = 5;
+                }
+                for(int i = 0; i < 5; i++) {
+                    tabuleiro[coordy + 2][coordx + i - 2] = 5;
+                }
+                break;
+            case 1:
+                for(int i = 0; i < 5; i++) {
+                    tabuleiro[coordy][coordx + i - 2] = 5;
+                }
+                tabuleiro[coordy - 1][coordx] = 5;
+                tabuleiro[coordy + 1][coordx] = 5;
+                break;
+            case 2:
+                for(int i = 0; i < 3; i++) {
+                    tabuleiro[coordy][coordx + i - 1] = 5;
+                }
+                tabuleiro[coordy - 1][coordx] = 5;
+                tabuleiro[coordy + 1][coordx] = 5;
+                break;
+        }
+    }
+    // criaembarcacao(3, 5, 5);
+    // criaembarcacao(2, 3, 3);
+    // criaembarcacao(0, 6, 2);
+    // criaembarcacao(1, 1, 4);
+    criahabilidade(0, 2, 0);
+    criahabilidade(1, 7, 7);
+    criahabilidade(2, 5, 5);
 
     mostratabuleiro();
     
